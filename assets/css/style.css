@@ -155,7 +155,10 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body { 
+/* 	background: var(--smoky-black);  */
+	background: linear-gradient(to bottom right, #FFB6C1, #FFBCD9, #F4C2C2, #F7CAC9, #FFD8E1, #FDE3E3, #FF91A4, #FBAED2);
+}
 
 
 
