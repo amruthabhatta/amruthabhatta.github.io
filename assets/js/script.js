@@ -56,63 +56,62 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 // custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
+// const select = document.querySelector("[data-select]");
+// const selectItems = document.querySelectorAll("[data-select-item]");
+// const selectValue = document.querySelector("[data-selecct-value]");
+// const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+// select.addEventListener("click", function () { elementToggleFunc(this); });
 
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
+// // add event in all select items
+// for (let i = 0; i < selectItems.length; i++) {
+//   selectItems[i].addEventListener("click", function () {
 
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
+//     let selectedValue = this.innerText.toLowerCase();
+//     selectValue.innerText = this.innerText;
+//     elementToggleFunc(select);
+//     filterFunc(selectedValue);
 
-  });
-}
+//   });
+// }
 
 // filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
+// const filterItems = document.querySelectorAll("[data-filter-item]");
 
-const filterFunc = function (selectedValue) {
+// const filterFunc = function (selectedValue) {
 
-  for (let i = 0; i < filterItems.length; i++) {
+//   for (let i = 0; i < filterItems.length; i++) {
 
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
+//     if (selectedValue === "all") {
+//       filterItems[i].classList.add("active");
+//     } else if (selectedValue === filterItems[i].dataset.category) {
+//       filterItems[i].classList.add("active");
+//     } else {
+//       filterItems[i].classList.remove("active");
+//     }
 
-  }
+//   }
 
-}
+// }
 
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+// let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
+// for (let i = 0; i < filterBtn.length; i++) {
 
-  filterBtn[i].addEventListener("click", function () {
+//   filterBtn[i].addEventListener("click", function () {
 
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
+//     let selectedValue = this.innerText.toLowerCase();
+//     selectValue.innerText = this.innerText;
+//     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
+//     lastClickedBtn.classList.remove("active");
+//     this.classList.add("active");
+//     lastClickedBtn = this;
 
-  });
+//   });
 
-}
-
+// }
 
 
 // contact form variables
@@ -157,3 +156,35 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// portfolio
+const portfolioItem = document.querySelectorAll("[data-portfolio-item]");
+const portfolioContainer = document.querySelector("[data-portfolio-modal-container]");
+const portfolioCloseBtn = document.querySelector("[data-portfolio-modal-close-btn]");
+const portfolioOverlay = document.querySelector("[data-portfolio-overlay]");
+
+// modal variable
+const portfolioModalImg = document.querySelector("[data-portfolio-modal-img]");
+const portfolioModalTitle = document.querySelector("[data-portfolio-modal-title]");
+const portfolioModalText = document.querySelector("[data-portfolio-modal-text]");
+
+// modal toggle function
+const PortfolioModalFunc = function () {
+  portfolioContainer.classList.toggle("active");
+  portfolioOverlay.classList.toggle("active");
+}
+
+// add click event to all modal items
+for (let i = 0; i < portfolioItem.length; i++) {
+
+  portfolioItem[i].addEventListener("click", function () {
+    portfolioModalText.innerHTML = this.querySelector("[data-portfolio-modal-inner-text]").innerHTML;
+    PortfolioModalFunc();
+  });
+
+}
+
+// add click event to modal close button
+portfolioCloseBtn.addEventListener("click", PortfolioModalFunc);
+portfolioOverlay.addEventListener("click", PortfolioModalFunc);
